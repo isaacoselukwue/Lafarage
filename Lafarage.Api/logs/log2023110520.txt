@@ -1,0 +1,23 @@
+2023-11-05 20:02:17.578 +01:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.Extensions.Caching.Memory.IMemoryCache' while attempting to activate 'Lafarage.Api.Filters.RateLimitingMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2023-11-05 20:02:54.884 +01:00 [INF] Now listening on: https://localhost:7040
+2023-11-05 20:02:54.897 +01:00 [INF] Now listening on: http://localhost:5073
+2023-11-05 20:02:54.898 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-05 20:02:54.898 +01:00 [INF] Hosting environment: Development
+2023-11-05 20:02:54.898 +01:00 [INF] Content root path: /Users/isaac/Documents/Personal Projects/Lafarage/Lafarage.Api
+2023-11-05 20:04:08.114 +01:00 [INF] Now listening on: https://localhost:7040
+2023-11-05 20:04:08.128 +01:00 [INF] Now listening on: http://localhost:5073
+2023-11-05 20:04:08.129 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-05 20:04:08.129 +01:00 [INF] Hosting environment: Development
+2023-11-05 20:04:08.129 +01:00 [INF] Content root path: /Users/isaac/Documents/Personal Projects/Lafarage/Lafarage.Api
+2023-11-05 20:04:41.628 +01:00 [INF] Now listening on: https://localhost:7040
+2023-11-05 20:04:41.644 +01:00 [INF] Now listening on: http://localhost:5073
+2023-11-05 20:04:41.645 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-05 20:04:41.645 +01:00 [INF] Hosting environment: Development
+2023-11-05 20:04:41.645 +01:00 [INF] Content root path: /Users/isaac/Documents/Personal Projects/Lafarage/Lafarage.Api

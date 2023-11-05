@@ -1,11 +1,32 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿global using Lafarage.Data;
+global using Lafarage.Domain;
+global using Lafarage.Service;
+global using Lafarage.Api.Filters;
+global using Serilog;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, config) =>
+{
+    config.Enrich.FromLogContext()
+        .WriteTo.Console()
+        .ReadFrom.Configuration(context.Configuration);
+
+});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddApiVersioning(x =>
+{
+    x.DefaultApiVersion = new ApiVersion(1, 0);
+    x.AssumeDefaultVersionWhenUnspecified = true;
+    x.ReportApiVersions = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
+builder.Services.AddDataDependencies(builder.Configuration);
+builder.Services.AddDomainDependencies(builder.Configuration);
+builder.Services.AddServiceDependencies(builder.Configuration);
 
 var app = builder.Build();
 
@@ -17,7 +38,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+app.UseMiddleware<CustomResponseHeaderMiddleware>();
+app.UseMiddleware<RateLimitingMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
